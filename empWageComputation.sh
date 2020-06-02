@@ -20,12 +20,13 @@ echo $empHrs
 while [[ $totalEmpHrs -lt $maxHrs && $totalWorkingDays -lt $workingDays ]]
 do
         ((totalWorkingDays++))
-        #empCheck=$(($RANDOM%3))
-        WorkingHrs=$(getWorkingHours  $(($RANDOM%3)) )
+        empCheck=$(($RANDOM%3))
+        WorkingHrs=$(getWorkingHours  $empCheck )
         totalEmpHrs=$(($totalEmpHrs+$WorkingHrs))
+	dailyWage[$totalWorkingDays]=$(($WorkingHrs*$ratePerHr))
 done
 totalSalary=$(($totalEmpHrs*$ratePerHr))
 echo $totalSalary
-
-
-       
+echo ${dailyWage[@]}
+        
+        
