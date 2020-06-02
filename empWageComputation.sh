@@ -1,14 +1,19 @@
 #!/bin/bash
 echo "Welcome to employee wage computation "
-PartTime=1
-FullTime=2
+partTime=1
+fullTime=2
 ratePerHr=20;
-empCheck=$(($RANDOM%3))
-
-case $empCheck in
-        $FullTime) empHrs=8;;
-        $PartTime) empHrs=4;;
-                *) empHrs=0;;
+workingDays=20;
+totalSalary=0;
+for (( i=1; i<=$workingDays; i++ ))
+do
+        empCheck=$(($RANDOM%3))
+        case $empCheck in
+        	$fullTime) empHrs=8;;
+        	$partTime) empHrs=4;;
+                   	*) empHrs=0;;
 esac
-salary=$(($ratePerHr*$empHrs))
-echo $salary
+salary=$((empHrs*ratePerHr))
+totalSalary=$(($salary+$totalSalary))
+done
+echo $totalSalary
