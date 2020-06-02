@@ -2,7 +2,12 @@
 echo "Welcome to employee wage computation "
 if [[ $(($RANDOM%2)) -eq 1 ]]
 then
-        echo "EMPLOYEE IS ABSENT "
+         ratePerHr=20;
+         empHrs=8;
+         salary=$(($ratePerHr*$empHrs))
 else
-        echo "EMPLOYEE IS PRESENT"
+        salary=0;
 fi
+echo $salary
+
+
